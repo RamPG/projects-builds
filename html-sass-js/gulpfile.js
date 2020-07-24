@@ -64,7 +64,7 @@ function watchProject() {
 function clearDist() {
   return deleteDist(`${destDir}/**/*`, { force: true });
 }
-exports.startServer = parallel(
+exports.startServer = series(
   clearDist, copyToDist, imgOptimization, scriptOptimization, stylesOptimization,
   htmlOptimization, browserSyncServerStart, watchProject,
 );
